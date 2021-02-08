@@ -19,6 +19,10 @@ public class MainActivity extends AppCompatActivity {
         //Bottom nav
         BottomNavigationView btnNav = findViewById(R.id.bottomNavigationview);
         btnNav.setOnNavigationItemSelectedListener(navListener);
+
+        //Setting HomeFragment as main fragment
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_layout,new HomeFragment()).commit();
     }
 
     //Listener Nav Bar
@@ -39,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.item3:
                             selectedFragment = new SettingsFragment();
                     }
+
+                    //Begin Transaction
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_layout,selectedFragment).commit();
+
+                    return true;
                 }
-            }
+            };
 }
